@@ -26,7 +26,7 @@ def Product(count=0):
         print("Error:", e)
 
     # Leaving part
-    answer = input("Insert your answer here (type 's' to end the game): ")
+    answer = input("Insert your answer here ('s' to end the game, 'r' to repeat): ")
 
     if answer.lower() == "s":
         confirm_stop = input("Are you sure you want to stop the game? (y/n): ").lower()
@@ -37,6 +37,18 @@ def Product(count=0):
             Product(count)
         else:
             Product(count)  # If the player doesn't confirm stopping the game, continue
+
+    elif answer.lower() == "r":
+        try:
+            with tempfile.NamedTemporaryFile(suffix=".mp3", delete=True) as temp_audio:
+                audcorrect = gTTS(text=str(line), lang='es')
+                audcorrect.save(temp_audio.name)
+
+                os.system(f"afplay {temp_audio.name}")  # Play audio on system
+
+        except Exception as e:
+            print("Error:", e)
+
 
     # Answering part
     elif answer != "stop":
