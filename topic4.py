@@ -3,6 +3,22 @@ from gtts import gTTS
 import os
 import tempfile
 
+menu = '''
+1 - Multiply by 11
+2 - Square numbers ending with 5
+3 - Multiply same-first-digit-and-last-add-up-10 numbers 
+4 - Multiply numbers between 10 and 20
+
+'''
+
+'''
+response = int(input(""))
+
+if response == 4:
+    Product()
+'''
+
+
 def Product(count=0):
     # Variables part
     first = random.randint(11, 30)
@@ -24,10 +40,10 @@ def Product(count=0):
 
     except Exception as e:
         print("Error:", e)
-
-    # Leaving part
+    
     answer = input("Insert your answer here ('s' to end the game, 'r' to repeat): ")
 
+# Leaving part
     if answer.lower() == "s":
         confirm_stop = input("Are you sure you want to stop the game? (y/n): ").lower()
         if confirm_stop == "y":
@@ -48,9 +64,11 @@ def Product(count=0):
 
         except Exception as e:
             print("Error:", e)
+        
+        answer = input("Insert your answer here ('s' to end the game, 'r' to repeat): ")
 
 
-    # Answering part
+# Answering part
     elif answer != "stop":
         try:
             answer = int(answer)
